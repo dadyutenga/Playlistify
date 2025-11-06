@@ -1,10 +1,18 @@
-# 🎥 Playlistify - YouTube Playlist Downloader
+# 🎥 Playlistify - YouTube Downloader Suite
 
 [![Python Version](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/patrick-paul/Playlistify)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/dadyutenga/Playlistify)
 
-> **Stop wasting time with broken tools and paid services.** Download entire YouTube playlists with one command - completely free and automatic.
+> **Stop wasting time with broken tools and paid services.** Download YouTube videos/playlists and convert to MP3 with automatic tagging - completely free and automatic.
+
+## 🎯 Two Powerful Tools
+
+### 🎥 [Playlist Downloader](README.md) 
+Download entire YouTube playlists as videos (MP4)
+
+### 🎧 [Music Downloader + Tag Editor](MUSIC_DOWNLOADER_README.md)
+Download YouTube audio as MP3 with automatic metadata tagging
 
 ## 😤 The Problem
 
@@ -19,8 +27,25 @@ You want to download a YouTube playlist. Simple, right? **Wrong.**
 
 ## ✨ The Solution
 
-**Playlistify** is a Python script that:
-- ✅ **Works immediately** - auto-installs all dependencies
+**Playlistify Suite** includes two powerful Python scripts:
+
+### 🎥 Video Downloader (`playlist_downloader.py`)
+- ✅ Download entire playlists or single videos
+- ✅ Multiple quality options (best, 1080p, 720p, 480p)
+- ✅ Parallel downloads for speed
+- ✅ Range selection (download videos 10-20)
+- ✅ Browser cookie support (bypass bot detection)
+
+### 🎧 Music Downloader (`music_downloader.py`)
+- ✅ Download audio as high-quality MP3 (320kbps)
+- ✅ Automatic metadata tagging (title, artist, album)
+- ✅ Auto-download & embed cover art
+- ✅ Fix metadata for existing MP3 files
+- ✅ Batch process entire folders
+- ✅ Drag & drop support
+
+**Both tools:**
+- ✅ **Work immediately** - auto-install all dependencies
 - ✅ **100% free** - no subscriptions, no limits
 - ✅ **Cross-platform** - Windows, macOS, Linux
 - ✅ **Smart** - detects your OS and configures everything automatically
@@ -41,21 +66,28 @@ You want to download a YouTube playlist. Simple, right? **Wrong.**
 
 1. **Clone or download this repository:**
    ```bash
-   git clone https://github.com/patrick-paul/Playlistify.git
+   git clone https://github.com/dadyutenga/Playlistify.git
    cd Playlistify
    ```
 
-2. **Run the script:**
+2. **Choose your tool:**
+
+   **For video downloads:**
    ```bash
    python playlist_downloader.py
    ```
 
-That's it! The script will:
+   **For music downloads with auto-tagging:**
+   ```bash
+   python music_downloader.py
+   ```
+
+That's it! Each script will:
 - ✓ Check for yt-dlp (auto-install if missing)
 - ✓ Check for ffmpeg (auto-install if missing)
 - ✓ Add ffmpeg to PATH (Windows)
-- ✓ Ask for your playlist URL
-- ✓ Download all videos as MP4 files
+- ✓ Install additional dependencies (mutagen for music tagging)
+- ✓ Guide you through the download process
 
 ### Usage Example
 
@@ -103,7 +135,22 @@ Quality: best
 ...
 ```
 
+## 🎯 Which Tool Should I Use?
+
+| Use Case | Tool | Command |
+|----------|------|---------|
+| Download YouTube videos (MP4) | Playlist Downloader | `python playlist_downloader.py` |
+| Download entire video playlists | Playlist Downloader | `python playlist_downloader.py` |
+| Download music as MP3 | Music Downloader | `python music_downloader.py` |
+| Auto-tag MP3 files | Music Downloader | `python music_downloader.py` |
+| Fix metadata on existing MP3s | Music Downloader | `python music_downloader.py` |
+| Batch process music folder | Music Downloader | `python music_downloader.py` |
+
+---
+
 ## 📖 Features
+
+### 🎥 Playlist Downloader Features
 
 ### 1. **List Videos Without Downloading**
 Preview all videos in a playlist with titles, URLs, and durations:
