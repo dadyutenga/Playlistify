@@ -68,6 +68,19 @@ def get_os():
 
 def check_command_exists(command):
     """Check if a command exists in PATH with improved detection"""
+    # Special handling for yt-dlp as a Python module
+    if command == 'yt-dlp':
+        try:
+            result = subprocess.run(
+                [sys.executable, '-m', 'yt_dlp', '--version'],
+                capture_output=True,
+                timeout=5,
+                shell=False
+            )
+            return result.returncode == 0
+        except (subprocess.CalledProcessError, FileNotFoundError, subprocess.TimeoutExpired):
+            pass
+    
     # Method 1: Try using shutil.which (most reliable)
     if shutil.which(command):
         return True
@@ -530,7 +543,9 @@ def get_playlist_info(playlist_url):
     print(f"\n{PROCESS} Fetching playlist information...")
     try:
         cmd = [
-            'yt-dlp',
+            sys.executable,
+            '-m',
+            'yt_dlp',
             '--flat-playlist',
             '--dump-json',
             playlist_url
@@ -578,7 +593,9 @@ def download_single_video(video_url, output_dir='downloads', quality='best', max
     format_string = quality_formats.get(quality, quality_formats['best'])
     
     cmd = [
-        'yt-dlp',
+        sys.executable,
+        '-m',
+        'yt_dlp',
         '-f', format_string,
         '--merge-output-format', 'mp4',
         '-o', f'{output_dir}/%(title)s.%(ext)s',
@@ -677,7 +694,9 @@ def download_video_worker(video_info, output_dir, quality, max_retries=3, use_co
         output_template = f'{output_dir}/%(title)s.%(ext)s'
     
     cmd = [
-        'yt-dlp',
+        sys.executable,
+        '-m',
+        'yt_dlp',
         '-f', format_string,
         '--merge-output-format', 'mp4',
         '-o', output_template,
@@ -825,7 +844,9 @@ def download_playlist(playlist_url, output_dir='downloads', quality='best', use_
     print(f"{'─' * 60}")
     
     cmd = [
-        'yt-dlp',
+        sys.executable,
+        '-m',
+        'yt_dlp',
         '-f', format_string,
         '--merge-output-format', 'mp4',
         '-o', f'{output_dir}/%(playlist_index)s - %(title)s.%(ext)s',
